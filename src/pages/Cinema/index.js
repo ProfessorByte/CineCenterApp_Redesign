@@ -7,6 +7,7 @@ import { Container, Title, BannerButton, Banner, SliderMovie } from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { getListMovies, randomBanner } from "../../utils/movie";
 import SliderItem from "../../components/SliderItem";
+import HeaderMainPage from "../../components/Header/HeaderMainPage";
 
 export default function Cinema() {
   const LIST_IDS_ON_BILLBOARD = [756999, 718789, 507086, 361743];
@@ -85,7 +86,7 @@ export default function Cinema() {
 
   return (
     <Container>
-      <Header title="Cine Center" />
+      <HeaderMainPage title="Cine Center" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <Title>En cartelera</Title>
 
