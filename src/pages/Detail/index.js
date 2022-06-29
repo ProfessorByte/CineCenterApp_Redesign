@@ -39,7 +39,7 @@ function Detail() {
 
     async function getMovie() {
       const response = await api
-        .get(`/movie/${route.params?.id}`, {
+        .get(route.params?.uri, {
           params: {
             api_key: key,
             language: "es-BO",
@@ -71,11 +71,11 @@ function Detail() {
     if (favoritedMovie) {
       await deleteMovie(movie.id);
       setFavoritedMovie(false);
-      alert("La película ha sido eliminada de tu lista.");
+      alert("El elemento ha sido eliminado de tu lista.");
     } else {
       await saveMovie("@reactflix", movie);
       setFavoritedMovie(true);
-      alert("Película guardada con éxito en tu lista.");
+      alert("Elemento guardado con éxito en tu lista.");
     }
   }
 
@@ -106,7 +106,7 @@ function Detail() {
         <Feather name="link" size={24} color="#FFF" />
       </ButtonLink>
 
-      <Title numberOfLines={2}>{movie.title}</Title>
+      <Title numberOfLines={2}>{movie.title ? movie.title : movie.name}</Title>
 
       <ContentArea>
         <Stars

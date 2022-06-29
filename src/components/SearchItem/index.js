@@ -7,7 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 function SearchItem({ data, navigatePage }) {
   function detailMovie() {
     if (data.release_date === "") {
-      alert("La película aún no tiene fecha de estreno.");
+      alert("El elemento aún no tiene fecha de estreno.");
       return;
     }
 
@@ -29,7 +29,7 @@ function SearchItem({ data, navigatePage }) {
         />
       )}
 
-      <Title>{data?.title}</Title>
+      <Title>{data?.title ? data?.title : data?.name}</Title>
 
       <RateContainer>
         <Ionicons name="md-star" size={12} color="#E7A74e" />

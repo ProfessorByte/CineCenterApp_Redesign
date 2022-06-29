@@ -40,7 +40,9 @@ function Movies() {
   }
 
   function navigateDetailsPage(item) {
-    navigation.navigate("Detail", { id: item.id });
+    navigation.navigate("Detail", {
+      uri: item.title ? `/movie/${item?.id}` : `/tv/${item?.id}`,
+    });
   }
 
   return (

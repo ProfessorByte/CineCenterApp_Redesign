@@ -19,7 +19,7 @@ function Search() {
     let isActive = true;
 
     async function getSearchMovie() {
-      const response = await api.get("/search/movie", {
+      const response = await api.get(`/search/${route?.params?.type}`, {
         params: {
           query: route?.params?.name,
           api_key: key,
@@ -44,7 +44,9 @@ function Search() {
   }, []);
 
   function navigateDetailsPage(item) {
-    navigation.navigate("Detail", { id: item.id });
+    navigation.navigate("Detail", {
+      uri: `/${route?.params?.type}/${item?.id}`,
+    });
   }
 
   if (loading) {

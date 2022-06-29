@@ -1,19 +1,19 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Series from "../pages/Series";
 import Detail from "../pages/Detail";
-import Search from "../pages/Search";
+import Movies from "../pages/Movies";
 
 const Stack = createNativeStackNavigator();
 
-export default function StackRoutesSeries() {
+export default function StackRoutesSaved() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Series"
-        component={Series}
+        name="Saved"
+        component={Movies}
         options={{
           headerShown: false,
+          title: "Guardados",
         }}
       />
       <Stack.Screen
@@ -22,22 +22,6 @@ export default function StackRoutesSeries() {
         options={{
           headerShown: false,
           title: "Detalles",
-        }}
-      />
-      <Stack.Screen
-        name="Search"
-        component={Search}
-        options={{
-          title: "Página de búsqueda",
-          headerTintColor: "#FFF",
-
-          headerTitleStyle: {
-            color: "#FFF",
-          },
-
-          headerStyle: {
-            backgroundColor: "#141414",
-          },
         }}
       />
     </Stack.Navigator>

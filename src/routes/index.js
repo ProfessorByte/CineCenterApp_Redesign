@@ -8,6 +8,7 @@ import Movies from "../pages/Movies";
 import StackRoutes from "./stackRoutes";
 import StackRoutesCinema from "./stackRoutesCinema";
 import StackRoutesSeries from "./stackRoutesSeries";
+import StackRoutesSaved from "./stackRoutesSaved";
 
 // const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
@@ -72,7 +73,7 @@ function Routes() {
       />
       <Tab.Screen
         name="Movies"
-        component={Movies}
+        component={StackRoutesSaved}
         options={{
           title: "Guardados",
           tabBarIcon: ({ focused, size, color }) => (

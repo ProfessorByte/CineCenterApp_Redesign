@@ -17,7 +17,7 @@ export async function saveMovie(key, newMovie) {
   const hasMovie = moviesStored.some((item) => item.id === newMovie.id);
 
   if (hasMovie) {
-    console.log("La película ya existe en tu lista");
+    console.log("El elemento ya existe en tu lista");
     return;
   }
 

@@ -86,13 +86,13 @@ function Home() {
   }, []);
 
   function navigateDetailsPage(item) {
-    navigation.navigate("Detail", { id: item.id });
+    navigation.navigate("Detail", { uri: `/movie/${item.id}` });
   }
 
   function handleSearchMovie() {
     if (input === "") return;
 
-    navigation.navigate("Search", { name: input });
+    navigation.navigate("Search", { name: input, type: "movie" });
 
     setInput("");
   }
