@@ -45,7 +45,7 @@ function Movies() {
 
   return (
     <Container>
-      <Header title="Mis peliculas" />
+      <Header title="Guardados" />
 
       <ListMovies
         showsVerticalScrollIndicator={false}

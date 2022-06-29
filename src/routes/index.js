@@ -1,35 +1,53 @@
 import React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+// import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 import Movies from "../pages/Movies";
 import StackRoutes from "./stackRoutes";
+import StackRoutesCinema from "./stackRoutesCinema";
+import StackRoutesSeries from "./stackRoutesSeries";
 
-const Drawer = createDrawerNavigator();
+// const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
 
 function Routes() {
   return (
-    <Drawer.Navigator
+    <Tab.Navigator
       screenOptions={{
         headerShown: false,
 
-        drawerStyle: {
+        tabBarStyle: {
           backgroundColor: "#090A0E",
-          paddingTop: 20,
+          // paddingTop: 20,
         },
 
-        drawerActiveBackgroundColor: "#E50914",
-        drawerActiveTintColor: "#FFF",
-        drawerInactiveTintColor: "#FFF",
+        tabBarActiveBackgroundColor: "#E50914",
+        tabBarActiveTintColor: "#FFF",
+        tabBarInactiveTintColor: "#FFF",
       }}
     >
-      <Drawer.Screen
+      <Tab.Screen
+        name="CinemaDrawer"
+        component={StackRoutesCinema}
+        options={{
+          title: "Cine",
+          tabBarIcon: ({ focused, size, color }) => (
+            <MaterialCommunityIcons
+              name={"movie-roll"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="HomeDrawer"
         component={StackRoutes}
         options={{
-          title: "Home",
-          drawerIcon: ({ focused, size, color }) => (
+          title: "Películas",
+          tabBarIcon: ({ focused, size, color }) => (
             <MaterialCommunityIcons
               name={focused ? "movie-open" : "movie-outline"}
               size={size}
@@ -38,12 +56,26 @@ function Routes() {
           ),
         }}
       />
-      <Drawer.Screen
+      <Tab.Screen
+        name="SeriesDrawer"
+        component={StackRoutesSeries}
+        options={{
+          title: "Series",
+          tabBarIcon: ({ focused, size, color }) => (
+            <MaterialCommunityIcons
+              name={"youtube-tv"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Movies"
         component={Movies}
         options={{
-          title: "Mis películas",
-          drawerIcon: ({ focused, size, color }) => (
+          title: "Guardados",
+          tabBarIcon: ({ focused, size, color }) => (
             <MaterialCommunityIcons
               name={focused ? "archive" : "archive-outline"}
               size={size}
@@ -52,7 +84,7 @@ function Routes() {
           ),
         }}
       />
-    </Drawer.Navigator>
+    </Tab.Navigator>
   );
 }
 
