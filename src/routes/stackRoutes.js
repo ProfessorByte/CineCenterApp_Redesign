@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../pages/Home";
 import Detail from "../pages/Detail";
 import Search from "../pages/Search";
+import SideBarNavigator from "./sideBarNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,8 +12,8 @@ function StackRoutes() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="SideBar"
+        component={SideBarNavigator}
         options={{
           headerShown: false,
         }}
