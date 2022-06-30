@@ -12,7 +12,7 @@ import {
   Description,
 } from "./styles";
 
-import { ScrollView, Modal, Text, FlatList, Image, View } from "react-native";
+import { ScrollView, Modal, FlatList } from "react-native";
 
 import { Feather, Ionicons } from "@expo/vector-icons";
 

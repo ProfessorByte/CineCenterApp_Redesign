@@ -1,6 +1,5 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Series from "../pages/Series";
 import Detail from "../pages/Detail";
 import Search from "../pages/Search";
 import SideBarNavigatorSeries from "./sideBarNavigatorSeries";

@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView } from "react-native";
-import Header from "../../components/Header";
 import api, { key } from "../../services/api";
 import { Container, Title, BannerButton, Banner, SliderMovie } from "./styles";
 
 import { useNavigation } from "@react-navigation/native";
-import { getListMovies, randomBanner } from "../../utils/movie";
+import { randomBanner } from "../../utils/movie";
 import SliderItem from "../../components/SliderItem";
 import HeaderMainPage from "../../components/Header/HeaderMainPage";
 
