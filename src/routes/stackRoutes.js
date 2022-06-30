@@ -12,7 +12,7 @@ function StackRoutes() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="SideBar"
+        name="SideBarMovies"
         component={SideBarNavigator}
         options={{
           headerShown: false,

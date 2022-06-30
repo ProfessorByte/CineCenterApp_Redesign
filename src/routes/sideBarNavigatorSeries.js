@@ -1,22 +1,20 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Home from "../pages/Home";
-import ActionMovies from "../pages/Search/actionMovies";
-import AdventureMovies from "../pages/Search/adventureMovies";
-import AnimationMovies from "../pages/Search/animationMovies";
-import ComedyMovies from "../pages/Search/comedyMovies";
-import DramaMovies from "../pages/Search/dramaMovies";
-import FantasyMovies from "../pages/Search/FantasyMovies";
-import HorrorMovies from "../pages/Search/HorrorMovies";
-import MusicMovies from "../pages/Search/MusicMovies";
-import MysteryMovies from "../pages/Search/MysteryMovies";
-import RomanceMovies from "../pages/Search/RomanceMovies";
-import ScienceFictionMovies from "../pages/Search/ScienceFictionMovies";
+import Series from "../pages/Series";
+import ActionAdventureSeries from "../pages/Search/actionAdventureSeries";
+import AnimationSeries from "../pages/Search/animationSeries";
+import ComedySeries from "../pages/Search/comedySeries";
+import CrimeSeries from "../pages/Search/crimeSeries";
+import DocumentarySeries from "../pages/Search/documentarySeries";
+import DramaSeries from "../pages/Search/dramaSeries";
+import FamilySeries from "../pages/Search/familySeries";
+import MysterySeries from "../pages/Search/mysterySeries";
+import SciFiFantasySeries from "../pages/Search/sciFiFantasySeries";
 
-const Drawer = createDrawerNavigator();
+export default function SideBarNavigatorSeries() {
+  const Drawer = createDrawerNavigator();
 
-export default function SideBarNavigator() {
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -33,13 +31,13 @@ export default function SideBarNavigator() {
       }}
     >
       <Drawer.Screen
-        name="Home"
-        component={Home}
+        name="Series"
+        component={Series}
         options={{
           title: "Recomendaciones",
           drawerIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
+              name={"youtube-tv"}
               size={size}
               color={color}
             />
@@ -49,13 +47,13 @@ export default function SideBarNavigator() {
       />
 
       <Drawer.Screen
-        name="ActionMovies"
-        component={ActionMovies}
+        name="ActionAdventureSeries"
+        component={ActionAdventureSeries}
         options={{
-          title: "Acción",
+          title: "Acción y Aventuras",
           drawerIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
+              name={"youtube-tv"}
               size={size}
               color={color}
             />
@@ -65,29 +63,13 @@ export default function SideBarNavigator() {
       />
 
       <Drawer.Screen
-        name="AdventureMovies"
-        component={AdventureMovies}
-        options={{
-          title: "Aventura",
-          drawerIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
-              size={size}
-              color={color}
-            />
-          ),
-          headerShown: false,
-        }}
-      />
-
-      <Drawer.Screen
-        name="AnimationMovies"
-        component={AnimationMovies}
+        name="AnimationSeries"
+        component={AnimationSeries}
         options={{
           title: "Animación",
           drawerIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
+              name={"youtube-tv"}
               size={size}
               color={color}
             />
@@ -97,13 +79,13 @@ export default function SideBarNavigator() {
       />
 
       <Drawer.Screen
-        name="ComedyMovies"
-        component={ComedyMovies}
+        name="ComedySeries"
+        component={ComedySeries}
         options={{
           title: "Comedia",
           drawerIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
+              name={"youtube-tv"}
               size={size}
               color={color}
             />
@@ -113,13 +95,45 @@ export default function SideBarNavigator() {
       />
 
       <Drawer.Screen
-        name="DramaMovies"
-        component={DramaMovies}
+        name="CrimeSeries"
+        component={CrimeSeries}
+        options={{
+          title: "Crimen",
+          drawerIcon: ({ focused, color, size }) => (
+            <MaterialCommunityIcons
+              name={"youtube-tv"}
+              size={size}
+              color={color}
+            />
+          ),
+          headerShown: false,
+        }}
+      />
+
+      <Drawer.Screen
+        name="DocumentarySeries"
+        component={DocumentarySeries}
+        options={{
+          title: "Documental",
+          drawerIcon: ({ focused, color, size }) => (
+            <MaterialCommunityIcons
+              name={"youtube-tv"}
+              size={size}
+              color={color}
+            />
+          ),
+          headerShown: false,
+        }}
+      />
+
+      <Drawer.Screen
+        name="DramaSeries"
+        component={DramaSeries}
         options={{
           title: "Drama",
           drawerIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
+              name={"youtube-tv"}
               size={size}
               color={color}
             />
@@ -129,13 +143,13 @@ export default function SideBarNavigator() {
       />
 
       <Drawer.Screen
-        name="FantasyMovies"
-        component={FantasyMovies}
+        name="FamilySeries"
+        component={FamilySeries}
         options={{
-          title: "Fantasía",
+          title: "Familia",
           drawerIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
+              name={"youtube-tv"}
               size={size}
               color={color}
             />
@@ -145,45 +159,13 @@ export default function SideBarNavigator() {
       />
 
       <Drawer.Screen
-        name="HorrorMovies"
-        component={HorrorMovies}
-        options={{
-          title: "Terror",
-          drawerIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
-              size={size}
-              color={color}
-            />
-          ),
-          headerShown: false,
-        }}
-      />
-
-      <Drawer.Screen
-        name="MusicMovies"
-        component={MusicMovies}
-        options={{
-          title: "Música",
-          drawerIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
-              size={size}
-              color={color}
-            />
-          ),
-          headerShown: false,
-        }}
-      />
-
-      <Drawer.Screen
-        name="MysteryMovies"
-        component={MysteryMovies}
+        name="MysterySeries"
+        component={MysterySeries}
         options={{
           title: "Misterio",
           drawerIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
+              name={"youtube-tv"}
               size={size}
               color={color}
             />
@@ -193,29 +175,13 @@ export default function SideBarNavigator() {
       />
 
       <Drawer.Screen
-        name="RomanceMovies"
-        component={RomanceMovies}
+        name="SciFiFantasySeries"
+        component={SciFiFantasySeries}
         options={{
-          title: "Romance",
+          title: "Sci-Fi y Fantasía",
           drawerIcon: ({ focused, color, size }) => (
             <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
-              size={size}
-              color={color}
-            />
-          ),
-          headerShown: false,
-        }}
-      />
-
-      <Drawer.Screen
-        name="ScienceFictionMovies"
-        component={ScienceFictionMovies}
-        options={{
-          title: "Ciencia Ficción",
-          drawerIcon: ({ focused, color, size }) => (
-            <MaterialCommunityIcons
-              name={focused ? "movie-open" : "movie-outline"}
+              name={"youtube-tv"}
               size={size}
               color={color}
             />
