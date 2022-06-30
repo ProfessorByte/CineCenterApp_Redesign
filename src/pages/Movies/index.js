@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from "../../components/Header";
 
 import { Container, ListMovies } from "./styles";
 
@@ -7,6 +6,7 @@ import { getMoviesSave, deleteMovie } from "../../utils/storage";
 
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import FavoriteItem from "../../components/FavoriteItem";
+import { Title } from "../../components/Header/styles";
 
 function Movies() {
   const navigation = useNavigation();
@@ -47,7 +47,7 @@ function Movies() {
 
   return (
     <Container>
-      <Header title="Guardados" />
+      <Title>Guardados</Title>
 
       <ListMovies
         showsVerticalScrollIndicator={false}

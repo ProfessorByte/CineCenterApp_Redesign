@@ -137,8 +137,9 @@ function Detail() {
           {movie.release_date ? movie.release_date : movie.first_air_date}
         </Text>
         <Text style={{ color: "#fff" }}>
-          {movie.runtime ? "Duración:" : "Duración/Ep.:"}{" "}
-          {movie.runtime ? movie.runtime : movie.episode_run_time} minutos
+          {movie.episode_run_time ? "Duración/Ep.::" : "Duración:"}{" "}
+          {movie.episode_run_time ? movie.episode_run_time : movie.runtime}{" "}
+          minutos
         </Text>
       </ContentArea>
 
