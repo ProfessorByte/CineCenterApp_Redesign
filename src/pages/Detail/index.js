@@ -12,7 +12,7 @@ import {
   Description,
 } from "./styles";
 
-import { ScrollView, Modal, FlatList } from "react-native";
+import { ScrollView, Modal, FlatList, Text } from "react-native";
 
 import { Feather, Ionicons } from "@expo/vector-icons";
 
@@ -130,6 +130,17 @@ function Detail() {
       </ButtonLink>
 
       <Title numberOfLines={2}>{movie.title ? movie.title : movie.name}</Title>
+
+      <ContentArea>
+        <Text style={{ color: "#fff" }}>
+          Estreno:{" "}
+          {movie.release_date ? movie.release_date : movie.first_air_date}
+        </Text>
+        <Text style={{ color: "#fff" }}>
+          {movie.runtime ? "Duración:" : "Duración/Ep.:"}{" "}
+          {movie.runtime ? movie.runtime : movie.episode_run_time} minutos
+        </Text>
+      </ContentArea>
 
       <ContentArea>
         <Stars
