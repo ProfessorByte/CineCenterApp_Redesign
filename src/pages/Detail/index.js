@@ -12,7 +12,7 @@ import {
   Description,
 } from "./styles";
 
-import { ScrollView, Modal } from "react-native";
+import { ScrollView, Modal, Text, FlatList, Image, View } from "react-native";
 
 import { Feather, Ionicons } from "@expo/vector-icons";
 
@@ -25,12 +25,14 @@ import Genres from "../../components/Genres";
 import ModalLink from "../../components/ModalLink";
 
 import { saveMovie, hasMovie, deleteMovie } from "../../utils/storage";
+import Person from "../../components/Person";
 
 function Detail() {
   const navigation = useNavigation();
   const route = useRoute();
 
   const [movie, setMovie] = useState({});
+  const [people, setPeople] = useState([]);
   const [openLink, setOpenLink] = useState(false);
   const [favoritedMovie, setFavoritedMovie] = useState(false);
 
@@ -66,6 +68,27 @@ function Detail() {
       isActive = false;
     };
   }, []);
+
+  useEffect(() => {
+    async function getPeople() {
+      const response = await api
+        .get(`/${movie?.title ? "movie" : "tv"}/${movie?.id}/credits`, {
+          params: {
+            api_key: key,
+            language: "es-BO",
+          },
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      setPeople(response?.data.cast);
+    }
+
+    if (movie.title || movie.name) {
+      getPeople();
+    }
+  }, [movie]);
 
   async function handleFavoriteMovie(movie) {
     if (favoritedMovie) {
@@ -135,6 +158,15 @@ function Detail() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Title>Descripción</Title>
         <Description>{movie?.overview}</Description>
+        <Title>Actores</Title>
+        {people && (
+          <FlatList
+            horizontal={true}
+            data={people}
+            keyExtractor={(item) => String(item?.id)}
+            renderItem={({ item }) => <Person data={item} />}
+          />
+        )}
       </ScrollView>
 
       <Modal animationType="slide" transparent={true} visible={openLink}>
