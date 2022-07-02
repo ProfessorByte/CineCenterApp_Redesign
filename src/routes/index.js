@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import Movies from "../pages/Movies";
 import StackRoutes from "./stackRoutes";
 import StackRoutesCinema from "./stackRoutesCinema";
 import StackRoutesSeries from "./stackRoutesSeries";

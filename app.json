@@ -1,31 +1,34 @@
 {
   "expo": {
-    "name": "CineCenterApp",
-    "slug": "CineCenterApp",
+    "name": "CenterApp",
+    "slug": "CenterApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/center_logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/center_logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "foregroundImage": "./assets/center_logo.png",
+        "backgroundColor": "#000000"
+      },
+      "package": "com.professorbyte.centerapp"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/center_logo.png"
     }
   }
 }
