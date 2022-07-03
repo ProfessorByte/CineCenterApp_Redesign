@@ -23,11 +23,11 @@ export default function Cinema() {
     let isActive = true;
     const ac = new AbortController();
 
-    async function getMovies(idsOnBillboard, idsComingSoon) {
+    async function getMovies(itemsOnBillboard, itemsComingSoon) {
       const listOnBillboard = await Promise.all(
-        idsOnBillboard.map(
-          async (id) =>
-            await api.get(`/movie/${id}`, {
+        itemsOnBillboard.map(
+          async (item) =>
+            await api.get(`/movie/${item.idTMDB}`, {
               params: {
                 api_key: key,
                 language: "es-BO",
@@ -36,9 +36,9 @@ export default function Cinema() {
         )
       );
       const listComingSoon = await Promise.all(
-        idsComingSoon.map(
-          async (id) =>
-            await api.get(`/movie/${id}`, {
+        itemsComingSoon.map(
+          async (item) =>
+            await api.get(`/movie/${item.idTMDB}`, {
               params: {
                 api_key: key,
                 language: "es-BO",
@@ -49,11 +49,17 @@ export default function Cinema() {
       if (isActive) {
         setOnBillboard([]);
         setComingSoon([]);
-        listOnBillboard.forEach((movie) => {
-          setOnBillboard((prev) => [...prev, movie.data]);
+        listOnBillboard.forEach((movie, index) => {
+          setOnBillboard((prev) => [
+            ...prev,
+            { ...movie.data, linkCinema: itemsOnBillboard[index].linkCinema },
+          ]);
         });
-        listComingSoon.forEach((movie) => {
-          setComingSoon((prev) => [...prev, movie.data]);
+        listComingSoon.forEach((movie, index) => {
+          setComingSoon((prev) => [
+            ...prev,
+            { ...movie.data, linkCinema: itemsComingSoon[index].linkCinema },
+          ]);
         });
         setLoading(false);
       }
@@ -72,10 +78,10 @@ export default function Cinema() {
     );
 
     onSnapshot(billboardQueryRef, (snapshot) => {
-      const idsOnBillboard = snapshot.docs.map((doc) => doc.data().idTMDB);
+      const itemsOnBillboard = snapshot.docs.map((doc) => doc.data());
       onSnapshot(comingSoonQueryRef, (snapshot) => {
-        const idsComingSoon = snapshot.docs.map((doc) => doc.data().idTMDB);
-        getMovies(idsOnBillboard, idsComingSoon);
+        const itemsComingSoon = snapshot.docs.map((doc) => doc.data());
+        getMovies(itemsOnBillboard, itemsComingSoon);
       });
     });
 
@@ -90,7 +96,10 @@ export default function Cinema() {
   }, [onBillboard]);
 
   function navigateDetailsPage(item) {
-    navigation.navigate("Detail", { uri: `/movie/${item?.id}` });
+    navigation.navigate("Detail", {
+      uri: `/movie/${item?.id}`,
+      linkCinema: item?.linkCinema,
+    });
   }
 
   if (loading) {

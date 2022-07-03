@@ -36,6 +36,7 @@ function DetailCinema() {
   const [people, setPeople] = useState([]);
   const [openLink, setOpenLink] = useState(false);
   const [favoritedMovie, setFavoritedMovie] = useState(false);
+  const [currentLink, setCurrentLink] = useState("");
 
   useEffect(() => {
     let isActive = true;
@@ -103,6 +104,11 @@ function DetailCinema() {
     }
   }
 
+  function handleOpenLink(link) {
+    setCurrentLink(link);
+    setOpenLink(true);
+  }
+
   return (
     <Container>
       <Header>
@@ -127,13 +133,13 @@ function DetailCinema() {
       />
 
       {movie?.homepage ? (
-        <ButtonLinkCinema onPress={() => setOpenLink(true)}>
+        <ButtonLinkCinema onPress={() => handleOpenLink(movie?.homepage)}>
           <Feather name="link" size={24} color="#FFF" />
         </ButtonLinkCinema>
       ) : (
         <></>
       )}
-      <ButtonTicket onPress={() => setOpenLink(true)}>
+      <ButtonTicket onPress={() => handleOpenLink(route.params?.linkCinema)}>
         <Entypo name="ticket" size={24} color="#FFF" />
       </ButtonTicket>
 
@@ -195,7 +201,7 @@ function DetailCinema() {
 
       <Modal animationType="slide" transparent={true} visible={openLink}>
         <ModalLink
-          link={movie?.homepage}
+          link={currentLink}
           title={movie?.title}
           closeModal={() => setOpenLink(false)}
         />
