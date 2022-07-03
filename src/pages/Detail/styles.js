@@ -45,6 +45,32 @@ export const ButtonLink = styled.TouchableOpacity`
   z-index: 99;
 `;
 
+export const ButtonLinkCinema = styled.TouchableOpacity`
+  background-color: #e50914;
+  width: 63px;
+  height: 63px;
+  border-radius: 35px;
+  position: absolute;
+  top: 300px;
+  right: 90px;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+`;
+
+export const ButtonTicket = styled.TouchableOpacity`
+  background-color: #e50914;
+  width: 63px;
+  height: 63px;
+  border-radius: 35px;
+  position: absolute;
+  top: 300px;
+  right: 15px;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+`;
+
 export const Title = styled.Text`
   color: #fff;
   font-size: 22px;

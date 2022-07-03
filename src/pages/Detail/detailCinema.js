@@ -4,17 +4,18 @@ import {
   Header,
   HeaderButton,
   Banner,
-  ButtonLink,
   Title,
   ContentArea,
   Rate,
   ListGenres,
   Description,
+  ButtonLinkCinema,
+  ButtonTicket,
 } from "./styles";
 
 import { ScrollView, Modal, FlatList, Text } from "react-native";
 
-import { Feather, Ionicons } from "@expo/vector-icons";
+import { Feather, Ionicons, Entypo } from "@expo/vector-icons";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
 import api, { key } from "../../services/api";
@@ -125,9 +126,16 @@ function DetailCinema() {
         }}
       />
 
-      <ButtonLink onPress={() => setOpenLink(true)}>
-        <Feather name="link" size={24} color="#FFF" />
-      </ButtonLink>
+      {movie?.homepage ? (
+        <ButtonLinkCinema onPress={() => setOpenLink(true)}>
+          <Feather name="link" size={24} color="#FFF" />
+        </ButtonLinkCinema>
+      ) : (
+        <></>
+      )}
+      <ButtonTicket onPress={() => setOpenLink(true)}>
+        <Entypo name="ticket" size={24} color="#FFF" />
+      </ButtonTicket>
 
       <Title numberOfLines={2}>{movie.title ? movie.title : movie.name}</Title>
 
@@ -169,7 +177,11 @@ function DetailCinema() {
 
       <ScrollView showsVerticalScrollIndicator={false}>
         <Title>Descripción</Title>
-        <Description>{movie?.overview}</Description>
+        {movie?.overview ? (
+          <Description>{movie?.overview}</Description>
+        ) : (
+          <Description>Sin descripción.</Description>
+        )}
         <Title>Actores</Title>
         {people && (
           <FlatList
