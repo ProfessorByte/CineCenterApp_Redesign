@@ -8,6 +8,9 @@ import { randomBanner } from "../../utils/movie";
 import SliderItem from "../../components/SliderItem";
 import HeaderMainPage from "../../components/Header/HeaderMainPage";
 
+import { db } from "../../services/database";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+
 export default function Cinema() {
   const [bannerMovie, setBannerMovie] = useState({});
   const [onBillboard, setOnBillboard] = useState([]);
@@ -56,10 +59,25 @@ export default function Cinema() {
       }
     }
 
-    const LIST_IDS_ON_BILLBOARD = [756999, 718789, 507086, 361743];
-    const LIST_IDS_COMMING_SOON = [616037];
+    const billboardCollectionRef = collection(db, "billboard");
+    const billboardQueryRef = query(
+      billboardCollectionRef,
+      orderBy("priority", "asc")
+    );
 
-    getMovies(LIST_IDS_ON_BILLBOARD, LIST_IDS_COMMING_SOON);
+    const comingSoonCollectionRef = collection(db, "comingSoon");
+    const comingSoonQueryRef = query(
+      comingSoonCollectionRef,
+      orderBy("priority", "asc")
+    );
+
+    onSnapshot(billboardQueryRef, (snapshot) => {
+      const idsOnBillboard = snapshot.docs.map((doc) => doc.data().idTMDB);
+      onSnapshot(comingSoonQueryRef, (snapshot) => {
+        const idsComingSoon = snapshot.docs.map((doc) => doc.data().idTMDB);
+        getMovies(idsOnBillboard, idsComingSoon);
+      });
+    });
 
     return () => {
       isActive = false;
