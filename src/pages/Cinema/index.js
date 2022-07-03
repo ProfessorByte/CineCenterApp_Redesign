@@ -9,9 +9,6 @@ import SliderItem from "../../components/SliderItem";
 import HeaderMainPage from "../../components/Header/HeaderMainPage";
 
 export default function Cinema() {
-  const LIST_IDS_ON_BILLBOARD = [756999, 718789, 507086, 361743];
-  const LIST_IDS_COMMING_SOON = [616037];
-
   const [bannerMovie, setBannerMovie] = useState({});
   const [onBillboard, setOnBillboard] = useState([]);
   const [comingSoon, setComingSoon] = useState([]);
@@ -58,6 +55,9 @@ export default function Cinema() {
         setLoading(false);
       }
     }
+
+    const LIST_IDS_ON_BILLBOARD = [756999, 718789, 507086, 361743];
+    const LIST_IDS_COMMING_SOON = [616037];
 
     getMovies(LIST_IDS_ON_BILLBOARD, LIST_IDS_COMMING_SOON);
 

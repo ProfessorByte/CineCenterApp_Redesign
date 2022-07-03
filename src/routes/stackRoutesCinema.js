@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Cinema from "../pages/Cinema";
-import Detail from "../pages/Detail";
+import DetailCinema from "../pages/Detail/detailCinema";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +17,7 @@ export default function StackRoutesCinema() {
       />
       <Stack.Screen
         name="Detail"
-        component={Detail}
+        component={DetailCinema}
         options={{
           headerShown: false,
           title: "Detalles",
