@@ -4,7 +4,7 @@ export default {
   expo: {
     name: "CenterApp",
     slug: "CenterApp",
-    version: "1.0.0",
+    version: "1.1.0",
     orientation: "portrait",
     icon: "./assets/center_logo.png",
     userInterfaceStyle: "light",
